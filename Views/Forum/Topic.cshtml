@@ -1,0 +1,46 @@
+﻿@model Topic
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="text-start">
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th width="70%">
+                    <h1>@Model.Title</h1>
+                    <span class="text-info">Started on @Model.CreationTime</span>
+                </th>
+                <td width="30%" class="text-end">
+                    <h5>@(Model.Author?.Name ?? "Unknown user")</h5>
+                    <span>@Model.Author?.Email</span>
+                </td>
+            </tr>
+        </thead>
+    </table>
+    <table class="table table-bordered table-striped" style="width:100%">
+        @foreach (Comment comm in Model.Comments)
+        {
+            <tr>
+                <td width="20%">
+                    <h5>@(comm.Author?.Name ?? "Unknown user")</h5>
+                    <span>@comm.Author?.Email</span>
+                </td>
+                <td width="80%">
+                    <p>@comm.Text</p>
+                    <span class="text-end">@comm.CreationTime</span>
+                </td>
+            </tr>
+        }
+    </table>
+    <div style="width:100%">
+        <form method="post">
+            <label>Leave your comment</label>
+            <div class="text-start">
+                <input type="hidden" name="TopicId" value=@Model.Id />
+                <textarea name="text" style="width:100%"></textarea>
+                <input type="submit" formaction=@Url.Action("Comment") value="Post" />
+            </div>
+        </form>
+    </div>
+</div>

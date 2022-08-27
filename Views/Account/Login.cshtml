@@ -1,0 +1,27 @@
+﻿@model LoginData
+@{
+    ViewData["Title"] = "Logging in";
+}
+
+<div class="text-start">
+    <form method="post">
+        <div class="validation text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <label asp-for="Email"></label><br />
+        <input type="text" asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span><br /><br />
+
+        <label asp-for="Password"></label><br />
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span><br /><br />
+
+        <input type="submit" value="Login" />
+    </form><br /><br />
+    <span>Don't have an account yet?</span><br />
+    <a asp-action="Register">Register now</a><br />
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

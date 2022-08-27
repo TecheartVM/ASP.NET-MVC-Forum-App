@@ -1,0 +1,29 @@
+﻿@model RegistrationData
+@{
+    ViewData["Title"] = "Registering a new account";
+}
+
+<div class="text-start">
+    <form method="post">
+        <div class="validation text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <label asp-for="Email"></label><br />
+        <input asp-for="Email" />
+        <span asp-for=""asp-validation-for="Email" class="text-danger"></span><br /><br />
+
+        <label asp-for="Username"></label><br />
+        <input asp-for="Username" />
+        <span asp-for=""asp-validation-for="Username" class="text-danger"></span><br /><br />
+        
+        <label asp-for="Password"></label><br />
+        <input asp-for="Password" />
+        <span asp-for=""asp-validation-for="Password" class="text-danger"></span><br /><br />
+        
+        <label asp-for="ConfirmPassword">Confirm Password</label><br />
+        <input asp-for="ConfirmPassword" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span><br /><br />
+
+        <input type="submit" value="Register" />
+    </form>
+</div>
+

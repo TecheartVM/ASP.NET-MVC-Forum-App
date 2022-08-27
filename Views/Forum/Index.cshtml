@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Topic>
+@{
+    ViewData["Title"] = "Discussions";
+}
+
+<div class="text-center">
+    <h1 class="display-4">User discussions</h1>
+
+    <div class="text-end">
+        <a href='@Url.Action("CreateTopic", "Forum")'>Create new</a>
+    </div>
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th width="80%">Topic</th>
+                <th width="20%">Created on</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Topic topic in Model)
+            {
+                <tr>
+                    <td class="text-start">
+                        <a href='@Url.Action("Topic", "Forum", topic)'>@topic.Title</a>
+                    </td>
+                    <td>@topic.CreationTime</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

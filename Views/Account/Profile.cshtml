@@ -1,0 +1,18 @@
+﻿@model User
+@{
+    ViewData["Title"] = "User profile";
+}
+
+<div class="text-start">
+    <table>
+        <tr>
+            <td>
+                <h1>@Model.Name</h1><br /><br />
+                <span>@Model.Email</span><br /><br />
+                <span>Registered at @DateOnly.FromDateTime(Model.RegistrationDate)</span><br /><br />
+                <a asp-action="Logout">Log out</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
